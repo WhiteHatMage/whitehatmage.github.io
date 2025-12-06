@@ -39,7 +39,7 @@ social:
   fediverse_handle: "@you@domain.com" # change to your fediverse handle or leave empty
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/WhiteHatMage # change to your Twitter homepage
+    - https://x.com/WhiteHatMage # change to your Twitter homepage
     - https://github.com/WhiteHatMage # change to your GitHub homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
