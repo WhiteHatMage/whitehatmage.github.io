@@ -16,10 +16,10 @@ timezone: Etc/UTC
 
 title: WhiteHatMage # the main title
 
-tagline: Collecting Grimoires of Blockchain Spells # it will display as the subtitle
+tagline: The Bounty Hunter Wizard # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
-  The Grimoire of Blockchain Spells by WhiteHatMage.
+  Bounty Hunter Wizard. I cast Exorcise on vulnerabilities and Heal on protocols.
 
 # Fill in the protocol & hostname for your site.
 # E.g. 'https://username.github.io', note that it does not end with a '/'.
