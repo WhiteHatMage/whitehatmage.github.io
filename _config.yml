@@ -16,7 +16,7 @@ timezone: Etc/UTC
 
 title: WhiteHatMage # the main title
 
-tagline: The Grimoire of Blockchain Spells # it will display as the subtitle
+tagline: Collecting Grimoires of Blockchain Spells # it will display as the subtitle
 
 description: >- # used by seo meta and the atom feed
   The Grimoire of Blockchain Spells by WhiteHatMage.
