@@ -1,5 +1,5 @@
 ---
-title: How to Pick your next Bounty Program
+title: The Guide to Professional Bounty Hunting in web3
 description: >-
   TODO
 categories: [Hunting]
