@@ -5,6 +5,8 @@ description: >-
 categories: [Hunting]
 tags: [hunting]
 pin: true
+image:
+  path: /assets/img/char-select.png
 ---
 
 ## Life of a Hunter
@@ -12,8 +14,6 @@ pin: true
 Hunting comes with a lot of uncertainty. If this is your main source of income, you can go months without earning anything. That pressure adds up, both mentally and financially. If you hunt part time, you are competing with people who can spend all day on it.
 
 There is no formula for predicting bounty income. But, if there were, it would have to include how likely a real exploit exists, how much damage it could cause, and how likely the project is to treat you fairly after disclosure.
-
----
 
 ## The Odds of Finding a Real Exploit
 
@@ -66,8 +66,6 @@ Based on how solid a project feels, I adjust my focus:
 - **Average codebase with good audits:** Audit fixes and leftover weak design.
 - **Average codebase with average audits:** Missed but not extremely complex exploit paths.
 
----
-
 ## Being First
 
 Even if a vulnerability exists, you still need to find it before someone else.
@@ -95,8 +93,6 @@ Projects with few users, obscure chains, or no active bounties are often easier 
 High TVL projects attract sophisticated attackers willing to invest heavily. If they are already active, remaining bugs are likely very complex.
 
 The key is not doing what everyone else is doing. Look at neglected parts, uncommon chains, older programs, or code paths people avoid.
-
----
 
 ## How I Actually Find Bugs
 
@@ -144,8 +140,6 @@ I work best in short, intense bursts. A few hard days, then rest. Hunting is not
 
 Pick projects that genuinely interest you. Motivation makes deep work possible.
 
----
-
 ## Impact and Rewards
 
 Professionally, it makes sense to focus on Critical issues that lead to real loss of funds.
@@ -155,8 +149,6 @@ Bounties follow a [power law](https://en.wikipedia.org/wiki/Power_law). One Crit
 Always quantify impact. Identify assets at risk and show realistic attack paths. A Critical that only loses trivial amounts will not be treated as meaningful.
 
 Reward size mostly reflects what projects think will attract hunters. Attackers do not care. Draining a low cap protocol is not much harder than draining a high cap one. So, time is better spent on programs with higher caps.
-
----
 
 ## Getting Paid Fairly
 
@@ -232,8 +224,6 @@ My personal picks are Immunefi, HackenProof, and Cantina.
 Self hosted programs rely entirely on project honesty. Clear rules matter more than hosting. Projects without explicit programs vary widely. Some pay generously. Others never will.
 
 If you engage, be professional, realistic, and fair. Do not enforce rewards that were never promised. A quick vibe check on Discord or public channels can save weeks of wasted effort.
-
----
 
 ## Final Thoughts
 
