@@ -1,10 +1,12 @@
 ---
-title: Tomes of Protective Magic: A White Mage’s Guide to Web3 Bug Hunting
+title: A White Mage’s Guide to Web3 Bug Hunting
 description: >-
   This post is about working as a professional web3 bug bounty hunter and some things to consider before choosing a program.
 categories: [Hunting]
 tags: [hunting]
 pin: true
+image:
+  path: /assets/img/char-select.png
 ---
 
 ## Life of a Hunter
