@@ -6,7 +6,7 @@ categories: [Hunting]
 tags: [hunting]
 pin: true
 image:
-  path: /assets/char-select.png
+  path: /assets/img/char-select.png
 ---
 
 ## Life of a Hunter
