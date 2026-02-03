@@ -37,6 +37,14 @@ Simple codebases rarely have meaningful exploit paths. I usually avoid them or s
 
 Good targets tend to be blockchains, large DeFi protocols, math-heavy systems, projects with many components, and systems with external or cross-chain integrations. Bridges and diamond proxy setups are classic examples.
 
+##### Optimization
+
+**Many bugs originate from optimization.**
+
+Gas optimizations in contracts, heavy use of assembly, manual memory management, rewritten math expressions, or performance-focused changes in blockchains and large systems all add extra layers of complexity. Even refactoring code for clarity or efficiency can introduce entirely new classes of bugs.
+
+These changes often hide edge cases the developer did not anticipate, or introduce subtle oversights related to obscure behaviors of virtual machines, languages, or execution environments.
+
 #### Innovation
 
 **Complexity hides bugs, but innovation creates space for them.**
@@ -234,6 +242,17 @@ My personal picks are Immunefi, HackenProof, and Cantina.
 Self hosted programs rely entirely on project honesty. Clear rules matter more than hosting. Projects without explicit programs vary widely. Some pay generously. Others never will.
 
 If you engage, be professional, realistic, and fair. Do not enforce rewards that were never promised. A quick vibe check on Discord or public channels can save weeks of wasted effort.
+
+---
+
+## Acknowledgements
+
+Thanks [0xdeadf4ce](https://x.com/0xdface), [lonelysloth](https://x.com/lonelysloth_sec) for your suggestions. I updated the post with some of your ideas.
+
+Also check my favorite related articles, and sources of inspiration:
+
+- [4 Strategies for picking the perfect bounty hunting targets](https://joranhonig.nl/blog/2022-02-13-4-bug-hunting-target-strategies) - by [joran](https://x.com/joranhonig)
+- [Bug bounty, feedback, strategy and alchemy](https://zhero-web-sec.github.io/thoughts/bugbounty-feedback-strategy-and-alchemy) - by [zhero](https://x.com/zhero___)
 
 ---
 
