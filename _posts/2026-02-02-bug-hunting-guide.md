@@ -49,7 +49,7 @@ Implementation-level innovation matters too. Teams experiment with new yield mec
 
 Ecosystem maturity matters. Large ecosystems tend to harden over time. New chains, uncommon languages, or unusual execution environments tend to have more basic issues simply because fewer people have checked them yet.
 
-##### Optimization
+#### Optimization
 
 **Many bugs originate from optimization.**
 
