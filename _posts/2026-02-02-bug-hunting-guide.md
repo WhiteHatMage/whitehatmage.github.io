@@ -143,7 +143,7 @@ If I had to put my work into some archetypes, it would fit into:
 - **The Speedrunner:** Reviews new programs immediately.
 - **The Watchman:** Monitors deployments and upgrades.
 - **The Lead Hunter:** Develops ideas around less known vulnerability types.
-  - **The Scavenger:** Gets inspired by obscure writeups or little known incidents.
+- **The Scavenger:** Gets inspired by obscure writeups or little known incidents.
 - **The Scientist:** Builds tools for monitoring and analysis. Possibly AI in the future.
 
 ### Mindset
