@@ -55,7 +55,7 @@ Ecosystem maturity matters. Large ecosystems tend to harden over time. New chain
 
 Gas optimizations in contracts, heavy use of assembly, manual memory management, rewritten math expressions, or performance-focused changes in blockchains and large systems all add extra layers of complexity. Even refactoring code for clarity or efficiency can introduce entirely new classes of bugs. Watch out for these patterns, especially in updates.
 
-These changes often hide edge cases the developer did not anticipate, or introduce subtle oversights related to obscure behaviors of virtual machines, languages, or execution environments.
+These changes often hide edge cases the developers did not anticipate, or introduce subtle oversights related to obscure behaviors of virtual machines, languages, or execution environments.
 
 #### Code Quality and Audits
 
