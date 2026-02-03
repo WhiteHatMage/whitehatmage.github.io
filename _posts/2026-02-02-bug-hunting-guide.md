@@ -37,14 +37,6 @@ Simple codebases rarely have meaningful exploit paths. I usually avoid them or s
 
 Good targets tend to be blockchains, large DeFi protocols, math-heavy systems, projects with many components, and systems with external or cross-chain integrations. Bridges and diamond proxy setups are classic examples.
 
-##### Optimization
-
-**Many bugs originate from optimization.**
-
-Gas optimizations in contracts, heavy use of assembly, manual memory management, rewritten math expressions, or performance-focused changes in blockchains and large systems all add extra layers of complexity. Even refactoring code for clarity or efficiency can introduce entirely new classes of bugs.
-
-These changes often hide edge cases the developer did not anticipate, or introduce subtle oversights related to obscure behaviors of virtual machines, languages, or execution environments.
-
 #### Innovation
 
 **Complexity hides bugs, but innovation creates space for them.**
@@ -56,6 +48,14 @@ When a project takes a new approach, there is a good chance that some attack pat
 Implementation-level innovation matters too. Teams experiment with new yield mechanics, consensus tweaks, execution optimizations, or porting contracts to new languages. These changes often introduce subtle bugs, especially when language or VM behavior is misunderstood.
 
 Ecosystem maturity matters. Large ecosystems tend to harden over time. New chains, uncommon languages, or unusual execution environments tend to have more basic issues simply because fewer people have checked them yet.
+
+##### Optimization
+
+**Many bugs originate from optimization.**
+
+Gas optimizations in contracts, heavy use of assembly, manual memory management, rewritten math expressions, or performance-focused changes in blockchains and large systems all add extra layers of complexity. Even refactoring code for clarity or efficiency can introduce entirely new classes of bugs. Watch out for these patterns, especially in updates.
+
+These changes often hide edge cases the developer did not anticipate, or introduce subtle oversights related to obscure behaviors of virtual machines, languages, or execution environments.
 
 #### Code Quality and Audits
 
