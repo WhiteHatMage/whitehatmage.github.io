@@ -247,7 +247,7 @@ If you engage, be professional, realistic, and fair. Do not enforce rewards that
 
 ## Acknowledgements
 
-Thanks [0xdeadf4ce](https://x.com/0xdface), [lonelysloth](https://x.com/lonelysloth_sec) for your suggestions. I updated the post with some of your ideas.
+Thanks [0xdeadf4ce](https://x.com/0xdface), [lonelysloth](https://x.com/lonelysloth_sec), [aviggiano](https://x.com/aviggiano) for your suggestions. I updated the post with some of your ideas.
 
 Also check my favorite related articles, and sources of inspiration:
 
