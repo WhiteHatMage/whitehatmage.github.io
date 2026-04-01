@@ -15,7 +15,7 @@ Here's the challenge if you want to try it yourself:
 
 > Powerful spells require intricate incantations. Only well-versed mages can unleash the power of ancient runes.
 
-```solidity
+```js
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity 0.8.13;
 
@@ -104,7 +104,7 @@ We choose **CURAGA** because it requires a clean, achievable `mana == 300`. The 
 
 ### Exploit Contract (Full Solution)
 
-```solidity
+```js
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.0;
 
