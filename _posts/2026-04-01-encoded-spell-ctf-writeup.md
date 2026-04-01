@@ -76,21 +76,16 @@ The goal is to call `isSolved()` and get `true`. This requires calling `cast(Spe
 The `cast` function has three strict requirements:
 
 1. The spell name must match the current `mana`:
-
 - `"CURE"` → `mana == 100`
 - `"CURA"` → `mana == 200`
 - `"CURAGA"` → `mana == 300`
 - `"ULTIMA`" → `mana == 6e66` (impossible in practice — calldata cannot be that large and it would be astronomically expensive)
-
 2. Every enchantment must break the corresponding weak seal:
-
-```solidity
+```js
 spell.enchantments[i] > weakSeals[i]   // for i in 0..7
 ```
-
 3. The encoded spell must match the master seal exactly
-
-```solidity
+```js
 keccak256(abi.encode(spell)) == masterSeal
 ```
 
