@@ -75,16 +75,20 @@ The goal is to call `isSolved()` and get `true`. This requires calling `cast(Spe
 
 The `cast` function has three strict requirements:
 
-1. The spell name must match the current `mana`:
-- `"CURE"` → `mana == 100`
-- `"CURA"` → `mana == 200`
-- `"CURAGA"` → `mana == 300`
-- `"ULTIMA`" → `mana == 6e66` (impossible in practice — calldata cannot be that large and it would be astronomically expensive)
-2. Every enchantment must break the corresponding weak seal:
+- The spell name must match the current `mana`:
+  - `"CURE"` → `mana == 100`
+  - `"CURA"` → `mana == 200`
+  - `"CURAGA"` → `mana == 300`
+  - `"ULTIMA`" → `mana == 6e66` (impossible in practice — calldata cannot be that large and it would be astronomically expensive)
+
+- Every enchantment must break the corresponding weak seal:
+
 ```js
 spell.enchantments[i] > weakSeals[i]   // for i in 0..7
 ```
-3. The encoded spell must match the master seal exactly
+
+- The encoded spell must match the master seal exactly:
+
 ```js
 keccak256(abi.encode(spell)) == masterSeal
 ```
@@ -153,16 +157,12 @@ contract Exploit {
 
 ### Core Tricks
 
-1. Mana = 300 bytes — The entire `createMagicCircle` call must be precisely 300 bytes long.
-
-2. Calldata layout reuse / overlap — The `newMasterSeal` parameter and the `runes` string data share bytes in the calldata. Specifically:
-
-- The first byte of `masterSeal` is placed where the LSB of the string length lives.
-- `weakSeals[0]` is set to `masterSeal << 8` (shift left 1 byte) so the remaining 31 bytes of `masterSeal` can be reused from the calldata when Solidity reads `newMasterSeal`.
-
-3. String length control — The string length's LSB is the first byte of `masterSeal`. We brute-force until this byte ≤ `0x07` so the decoded `bytes(runes)` length never overruns the 300-byte calldata (exactly 263 bytes of string data are available after the offset).
-
-4. Solidity compiler bug — A subtle layout/encoding quirk in 0.8.13 around `abi.encode` of a struct containing a dynamic `string` + fixed `bytes32[8]` requires zeroing a specific memory word at offset `0x160` before taking the keccak256 hash. This is the "MAGIC" `mstore`.
+- Mana = 300 bytes — The entire `createMagicCircle` call must be precisely 300 bytes long.
+- Calldata layout reuse / overlap — The `newMasterSeal` parameter and the `runes` string data share bytes in the calldata. Specifically:
+  - The first byte of `masterSeal` is placed where the LSB of the string length lives.
+  - `weakSeals[0]` is set to `masterSeal << 8` (shift left 1 byte) so the remaining 31 bytes of `masterSeal` can be reused from the calldata when Solidity reads `newMasterSeal`.
+- String length control — The string length's LSB is the first byte of `masterSeal`. We brute-force until this byte ≤ `0x07` so the decoded `bytes(runes)` length never overruns the 300-byte calldata (exactly 263 bytes of string data are available after the offset).
+- Solidity compiler bug — A subtle layout/encoding quirk in 0.8.13 around `abi.encode` of a struct containing a dynamic `string` + fixed `bytes32[8]` requires zeroing a specific memory word at offset `0x160` before taking the keccak256 hash. This is the "MAGIC" `mstore`.
 
 ### How the Calldata Overlap Works (Visualized)
 
