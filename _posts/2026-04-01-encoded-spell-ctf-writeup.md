@@ -69,40 +69,6 @@ contract Challenge {
 
 ## Solution
 
-### Summary
-
-The goal is to call `isSolved()` and get `true`. This requires calling `cast(Spell calldata spell)` in such a way that `unleashed` is set to `true`.
-
-The `cast` function has three strict requirements:
-
-- The spell name must match the current `mana`:
-  - `"CURE"` → `mana == 100`
-  - `"CURA"` → `mana == 200`
-  - `"CURAGA"` → `mana == 300`
-  - `"ULTIMA`" → `mana == 6e66` (impossible in practice — calldata cannot be that large and it would be astronomically expensive)
-
-- Every enchantment must break the corresponding weak seal:
-
-```js
-spell.enchantments[i] > weakSeals[i]   // for i in 0..7
-```
-
-- The encoded spell must match the master seal exactly:
-
-```js
-keccak256(abi.encode(spell)) == masterSeal
-```
-
-Before casting, we must call `createMagicCircle(string calldata runes, bytes32 newMasterSeal)`. This function does three things:
-
-- `mana = msg.data.length` (the raw calldata length of this call)
-- `masterSeal = newMasterSeal`
-- `weakSeals = abi.decode(bytes(runes), (bytes32[8]))`
-
-We choose **CURAGA** because it requires a clean, achievable `mana == 300`. The exploit therefore crafts a exactly 300-byte calldata for `createMagicCircle` while satisfying all the overlap tricks below.
-
-### Exploit Contract (Full Solution)
-
 ```js
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity ^0.8.0;
@@ -154,43 +120,3 @@ contract Exploit {
     }
 }
 ```
-
-### Core Tricks
-
-- Mana = 300 bytes — The entire `createMagicCircle` call must be precisely 300 bytes long.
-- Calldata layout reuse / overlap — The `newMasterSeal` parameter and the `runes` string data share bytes in the calldata. Specifically:
-  - The first byte of `masterSeal` is placed where the LSB of the string length lives.
-  - `weakSeals[0]` is set to `masterSeal << 8` (shift left 1 byte) so the remaining 31 bytes of `masterSeal` can be reused from the calldata when Solidity reads `newMasterSeal`.
-- String length control — The string length's LSB is the first byte of `masterSeal`. We brute-force until this byte ≤ `0x07` so the decoded `bytes(runes)` length never overruns the 300-byte calldata (exactly 263 bytes of string data are available after the offset).
-- Solidity compiler bug — A subtle layout/encoding quirk in 0.8.13 around `abi.encode` of a struct containing a dynamic `string` + fixed `bytes32[8]` requires zeroing a specific memory word at offset `0x160` before taking the keccak256 hash. This is the "MAGIC" `mstore`.
-
-### How the Calldata Overlap Works (Visualized)
-
-Calldata layout (300 bytes total):
-
-```
-0-3     : createMagicCircle selector
-4-35    : offset = 1          (points string data almost at the start)
-36      : sharedByte          = masterSeal[0]
-37-292  : weakSeals (256 bytes)
-293-299 : 7 zero bytes (padding)
-```
-
-- `newMasterSeal` is read from bytes 36–67 → `sharedByte + first 31 bytes of weakSeals[0]`.
-- Because `weakSeals[0] = masterSeal << 8`, those 31 bytes are exactly `masterSeal[1..31]`.
-- Therefore `newMasterSeal` reconstructs the full `masterSeal` we computed.
-- `runes` string data starts at byte 37 → `abi.decode(bytes(runes), (bytes32[8]))` gives exactly our `weakSeals` array.
-- The string length word's LSB is also at byte 36 (`sharedByte`). Because `sharedByte ≤ 0x07`, length = `256 + sharedByte` ≤ 263 bytes, which fits perfectly inside the calldata.
-
-### Why the Brute-Force + `i > weakSeals[0]`
-
-- `weakSeals[0] = masterSeal << 8` (a large but random 256-bit number).
-- `spell.enchantments[0] = i` (we start at `type(uint).max` and go down).
-- Because `i` is enormous and `masterSeal << 8` is just a shifted random value, the inequality `i > weakSeals[0]` always holds for the `i` we select.
-- The other seven enchantments are `type(uint).max`, which trivially beat the zero weak seals.
-
-### Solidity Compiler Bug
-
-The line `mstore(add(encodedSpell, 0x160), 0)` is the workaround for a subtle encoding/layout quirk present in Solidity 0.8.13 when `abi.encode` is used on a struct containing a dynamic `string` followed by a static `bytes32[8]`. Without this zeroing of the word immediately after the nominal encoded length (`0x160` bytes), the `keccak256` would not match what is later stored in `masterSeal`. This is the final "magic" piece that makes the equality check pass.
-
-- Reference: [Head Overflow Bug in Calldata Tuple ABI-Reencoding](https://www.soliditylang.org/blog/2022/08/08/calldata-tuple-reencoding-head-overflow-bug/)
