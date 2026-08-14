@@ -47,7 +47,7 @@ Due to their small context windows, LLMs fail at analyzing complex ideas and pat
 
 If I were to use them in my workflows, I’d consider them as a non-deterministic version of static analyzers. 
 
-### The Anatomy of Bugs
+### The Taxonomy of Bugs
 
 Live bugs are usually simple. They hide in complex paths. If you look at fixes, many involve just a single missing check. Simple codebases shouldn't have any exploit paths. You're most likely to find good vulnerabilities in blockchains, large DeFi protocols, math-heavy systems, and projects with many integrations.
 
@@ -63,7 +63,7 @@ Review the fixes. It often happens that projects introduce new issues when fixin
 
 Depending on your evaluation of the codebase, you should apply different tactics. Look for low-hanging fruit in sloppy codebases. Focus on the most complex paths on clean projects.
 
-### The Anatomy of Projects
+### Competition
 
 Projects are more likely to have vulnerabilities right after launch, or when they first start hosting a bounty program. As time goes on, you should focus on looking for the most complex attack paths and novel ideas. If you decide to look for vulnerabilities in new programs, do it as soon as possible. There's a lot of competition, and people are using automation more and more these days.
 
