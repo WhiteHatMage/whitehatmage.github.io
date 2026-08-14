@@ -47,7 +47,7 @@ Due to their small context windows, LLMs fail at analyzing complex ideas and pat
 
 If I were to use them in my workflows, I’d consider them as a non-deterministic version of static analyzers. 
 
-### The Taxonomy of Bugs
+### The Biomes of Bugs
 
 Live bugs are usually simple. They hide in complex paths. If you look at fixes, many involve just a single missing check. Simple codebases shouldn't have any exploit paths. You're most likely to find good vulnerabilities in blockchains, large DeFi protocols, math-heavy systems, and projects with many integrations.
 
