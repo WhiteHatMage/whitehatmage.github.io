@@ -7,6 +7,7 @@ tags: [technical]
 pin: false
 image:
   path: /assets/img/encoded-spell.jpg
+  alt: Decoding the spell runes - by Grok
 ---
 
 ## Challenge
