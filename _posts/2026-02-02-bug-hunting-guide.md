@@ -5,7 +5,7 @@ tags: [hunting]
 pin: true
 image:
   path: /assets/img/mage-forest-white.jpg
-  alt: Teaching white magic - by Grok
+  alt: Teaching white magic - by Grok Imagine
 ---
 
 
